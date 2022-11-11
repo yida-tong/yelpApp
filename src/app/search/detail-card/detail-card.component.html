@@ -1,0 +1,19 @@
+<div class="card rounded-3 mt-5" style="max-width: 700px; margin: auto">
+  <div class="card-body" style="padding-left: 0;padding-right: 0">
+    <div class="container-fluid">
+      <a style="cursor: pointer" (click)="sService.sFormState=1"><mat-icon fontIcon="keyboard_backspace" style="color: grey;font-size: 20px"></mat-icon></a>
+    </div>
+    <h4 class="card-title text-center mb-3">{{sService.sBusiness_DET.name}}</h4>
+    <mat-tab-group mat-align-tabs="center" color="primary" [(selectedIndex)]="tagNum">
+      <mat-tab label="Business details">
+        <app-pageone *ngIf="tagNum===0"></app-pageone>
+      </mat-tab>
+      <mat-tab label="Map location">
+        <app-pagetwo *ngIf="tagNum===1"></app-pagetwo>
+      </mat-tab>
+      <mat-tab label="Reviews">
+        <app-pagethree *ngIf="tagNum===2"></app-pagethree>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

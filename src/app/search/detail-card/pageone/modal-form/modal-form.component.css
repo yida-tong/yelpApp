@@ -1,0 +1,13 @@
+.is-valid {
+  background-image: none;
+  border-color: grey;
+}
+
+.form-select.is-valid {
+  background-image: none!important;
+  border-color: grey;
+}
+
+.modal {
+  background: rgba(0, 0, 0, 0.5);
+}

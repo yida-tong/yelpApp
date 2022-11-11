@@ -1,0 +1,8 @@
+<div class="container-fluid px-0">
+  <div *ngFor="let review of reviews;let k=index" [ngStyle]="{'background-color': k%2===0? 'rgb(244,244,244)': 'white'}" class="container-fluid">
+    <p class="fw-bold mb-1 pt-2">{{review.user}}</p>
+    <p>Rating: {{review.rating}}</p>
+    <p>{{review.text}}</p>
+    <p class="mb-0">{{review.time_created}}</p>
+  </div>
+</div>

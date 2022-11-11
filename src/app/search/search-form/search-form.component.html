@@ -1,0 +1,54 @@
+<div class="card rounded-3 mt-5" style="max-width: 550px; margin: auto">
+  <div class="card-body">
+    <h5 class="card-title text-center mt-3">Business Search</h5>
+    <form class="row g-3 mt-1 px-2" #formTemplate="ngForm" (submit)="onSubmit()" ngNativeValidate>
+      <div class="col-md-12">
+        <label for="term" class="form-label">Keyword <span style="color: red">*</span></label>
+        <input type="text" class="form-control" id="term" name="term" ngModel required [matAutocomplete]="auto" (ngModelChange)="onkeyStroke()">
+        <mat-autocomplete #auto="matAutocomplete">
+          <div *ngIf="isLoading; else notLoading">
+            <mat-option>
+              <mat-progress-spinner [mode]="'indeterminate'" [diameter]="25"></mat-progress-spinner>
+            </mat-option>
+          </div>
+          <ng-template #notLoading>
+            <mat-option *ngFor="let option of filteredOptions" [value]="option">
+              {{option}}
+            </mat-option>
+          </ng-template>
+        </mat-autocomplete>
+      </div>
+      <div class="col-md-6">
+        <label for="Distance" class="form-label">Distance</label>
+        <input type="text" class="form-control" id="Distance" name="Distance" ngModel="10" required>
+      </div>
+      <div class="col-md-5 col-9">
+        <label for="Category" class="form-label">Category <span style="color: red">*</span></label>
+        <select id="Category" class="form-select" name="Category" ngModel="all">
+          <option value="all">Default</option>
+          <option value="arts, All">Arts & Entertainment</option>
+          <option value="health, All">Health & Medical</option>
+          <option value="hotelstravel, All">Hotels & Travel</option>
+          <option value="food, All">Food</option>
+          <option value="professional, All">Professional Services</option>
+        </select>
+      </div>
+      <div class="col-md-12">
+        <label for="Location" class="form-label">Location <span style="color: red">*</span></label>
+        <input type="text" class="form-control" id="Location" name="Location" ngModel #locTemplate="ngModel" [required]="!checkTemplate.value" [disabled]="checkTemplate.value">
+      </div>
+      <div class="col-12">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="autodetect" name="autodetect" [ngModel]="false" #checkTemplate="ngModel" [required]="locTemplate.value.length===0" (ngModelChange)="locTemplate.reset('')">
+          <label class="form-check-label" for="autodetect">
+            Auto-detect my location
+          </label>
+        </div>
+      </div>
+      <div class="col-12 text-center">
+        <button type="submit" class="btn btn-danger me-3">Submit</button>
+        <button type="button" class="btn btn-primary" (click)="onReset()">Clear</button>
+      </div>
+    </form>
+  </div>
+</div>

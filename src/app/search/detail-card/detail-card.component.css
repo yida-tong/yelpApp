@@ -1,0 +1,16 @@
+/*.mat-tab-label {*/
+/*  !*min-width: 25px !important;*!*/
+/*  !*padding: 5px;*!*/
+/*  background-color: orange;*/
+/*  color: grey;*/
+/*}*/
+.mat-tab-header {
+  background-color: rgb(251,218,84);
+}
+.mat-tab-label {
+  font-size: 13px;
+}
+
+.mat-ink-bar {
+  background-color: black !important;
+}

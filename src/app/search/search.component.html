@@ -1,0 +1,4 @@
+<app-search-form></app-search-form>
+<div class="bg-light p-1 mt-5 rounded-pill no-res" *ngIf="sService.sFormState===0">No Results available</div>
+<app-table *ngIf="sService.sFormState===1"></app-table>
+<app-detail-card *ngIf="sService.sFormState===3"></app-detail-card>

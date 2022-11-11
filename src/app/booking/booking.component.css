@@ -1,0 +1,12 @@
+.table-css {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+  overflow:hidden
+}
+.no-res {
+  margin: auto;
+  max-width: 250px;
+  color: red;
+  background-color: white;
+}

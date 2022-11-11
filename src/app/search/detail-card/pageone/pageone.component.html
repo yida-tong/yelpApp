@@ -1,0 +1,40 @@
+<app-modal-form *ngIf="sService.formRendered"></app-modal-form>
+<div class="container-fluid text-center">
+  <app-info-card></app-info-card>
+
+  <button class="btn btn-danger mt-3" (click)="sService.formRendered=true" *ngIf="!isReserved()">Reserve now</button>
+  <button class="btn btn-primary mt-3" (click)="onCancelRes()" *ngIf="isReserved()">Cancel reservation</button>
+
+  <p class="mt-4">Share on:
+    <a target="_blank" href="https://twitter.com/intent/tweet?text={{twitter.text}}&url={{twitter.url}}" class="me-2"><i class="fa-brands fa-twitter" style="color: rgb(64,158,252);font-size: 23px"></i></a>
+    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{twitter.url}}&quote={{twitter.text}}"><i class="fa-brands fa-square-facebook" style="color: rgb(33,50,251);font-size: 23px"></i></a>
+  </p>
+
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" *ngIf="sService.sBusiness_DET.photos.length>0">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <figure class="test">
+          <img src="{{sService.sBusiness_DET.photos[0]}}" class="d-block w-100" alt="...">
+        </figure>
+      </div>
+      <div class="carousel-item" *ngIf="sService.sBusiness_DET.photos.length>=2">
+        <figure class="test">
+          <img src="{{sService.sBusiness_DET.photos[1]}}" class="d-block w-100" alt="...">
+        </figure>
+      </div>
+      <div class="carousel-item" *ngIf="sService.sBusiness_DET.photos.length==3">
+        <figure class="test">
+          <img src="{{sService.sBusiness_DET.photos[2]}}" class="d-block w-100" alt="..." >
+        </figure>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>

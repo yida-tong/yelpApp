@@ -1,0 +1,60 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false" data-bs-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Reservation form</h1>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <h5 class="text-center mb-0">{{sService.sBusiness_DET.name}}</h5>
+          <div class="row">
+            <form class="row g-3 needs-validation mt-0" #f="ngForm" (ngSubmit)="onSubmit(f)">
+              <div class="col-md-12 mt-2">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required email ngModel #emailField="ngModel" [ngClass]="{'is-valid': emailField.valid, 'is-invalid': (emailField.dirty||emailField.touched||f.submitted) && emailField.invalid}">
+                <div class="invalid-feedback">
+                  Email is required
+                </div>
+              </div>
+              <div class="col-md-12 mt-2">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" [min]="todayDate" id="date" name="date" required ngModel #dateField="ngModel" [ngClass]="{'is-valid': dateField.valid, 'is-invalid': (dateField.touched||dateField.dirty||f.submitted) &&dateField.invalid}">
+                <div class="invalid-feedback">
+                  Date is required
+                </div>
+              </div>
+              <div class="col-md-12 mt-2">
+                <label class="form-label">Time</label>
+                <div class="hstack gap-1">
+                  <select id="hour" class="form-select" name="hour" required style="width: 25%" ngModel #hourField="ngModel" [ngClass]="{'is-valid': hourField.valid, 'is-invalid': (hourField.touched||hourField.dirty||f.submitted) && hourField.invalid}">
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                  </select>:
+                  <select id="minute" class="form-select" name="minute" required style="width: 25%" ngModel #minuteField="ngModel" [ngClass]="{'is-valid': minuteField.valid, 'is-invalid': (minuteField.touched||minuteField.dirty||f.submitted)&&minuteField.invalid}">
+                    <option value="00">00</option>
+                    <option value="15">15</option>
+                    <option value="30">30</option>
+                    <option value="45">45</option>
+                  </select>
+                  <i class="fa-regular fa-clock"></i>
+                </div>
+              </div>
+              <div class="col-12 text-center">
+                <button class="btn btn-danger" type="submit">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal" (click)="sService.formRendered = false;">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
